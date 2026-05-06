@@ -37,7 +37,7 @@ export function BlackButton({
           />
 
           {/* Modal */}
-          <div className="relative bg-white rounded-lg shadow-lg max-w-4xl w-full mx-4 p-6 max-h-[90vh] overflow-y-auto">
+          <div className="relative bg-white rounded-lg shadow-lg max-w-xl w-full mx-4 p-6 max-h-[90vh] overflow-y-auto">
             {comp}
 
             {/* Footer Buttons */}

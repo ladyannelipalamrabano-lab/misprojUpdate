@@ -1,5 +1,6 @@
 import { ReportTabs } from "../../components/ui/tabs/ReportTabs.jsx";
 import { BlackButton } from "../../components/ui/buttons/BlackButton.jsx";
+import CreateReport from "../../components/ui/modals/report/CreateReport.jsx";
 import GatekeeperNav from "../../components/GatekeeperNav.jsx";
 
 function Reports() {
@@ -19,7 +20,11 @@ function Reports() {
               </p>
             </header>
             <div className="p-8 ">
-              <BlackButton val="+ Create Report" exc="Create Report" />
+              <BlackButton
+                val="+ Create Report"
+                exc="Create Report"
+                comp={<CreateReport />}
+              />
             </div>
           </div>
           <ReportTabs />
