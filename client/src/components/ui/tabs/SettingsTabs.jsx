@@ -5,6 +5,7 @@ import Tab from "@mui/material/Tab";
 import { BlackButton } from "../buttons/BlackButton";
 import { Input } from "../input/Input";
 import { useState } from "react";
+import CardImage from "../CardImage";
 
 export const SettingsTabs = () => {
   const [value, setValue] = useState(0);
@@ -24,7 +25,7 @@ export const SettingsTabs = () => {
         aria-labelledby={`simple-tab-${index}`}
         {...other}
       >
-        {value === index && <Box sx={{ p: 3 }}>{children}</Box>}
+        {value === index && <Box sx={{ p: { xs: 1, sm: 3 } }}>{children}</Box>}
       </div>
     );
   }
@@ -44,8 +45,9 @@ export const SettingsTabs = () => {
 
   return (
     <>
-      <div className="card mx-2 w-full rounded-2xl">
-        <Box sx={{ maxWidth: { xs: 510, sm: 1800 } }}>
+      {/* Tabs */}
+      <div className="card mx-2 w-full rounded-2xl p-1 sm:p-2">
+        <Box sx={{ maxWidth: "100%" }}>
           <Tabs
             value={value}
             onChange={handleChange}
@@ -53,25 +55,20 @@ export const SettingsTabs = () => {
             scrollButtons
             allowScrollButtonsMobile
             indicatorColor="primary"
-            textColor="bg-black"
+            textColor="inherit"
             sx={{
               width: "100%",
               "& .MuiTabs-flexContainer": {
-                justifyContent: {
-                  xs: "flex-start",
-                  md: "center",
-                },
+                justifyContent: { xs: "flex-start", md: "center" },
               },
               "& .MuiTab-root": {
                 minWidth: "unset",
-                px: 2,
-                flexShrink: 0,
+                px: { xs: 1, sm: 2 },
                 fontWeight: 700,
                 fontSize: {
-                  xs: "0.85rem",
-                  sm: "0.95rem",
+                  xs: "0.7rem",
+                  sm: "0.9rem",
                   md: "1rem",
-                  lg: "1.05rem",
                 },
                 whiteSpace: "nowrap",
               },
@@ -83,13 +80,18 @@ export const SettingsTabs = () => {
           </Tabs>
         </Box>
       </div>
-      <div className="card w-full mx-2 rounded-2xl gap-2 mt-2 p-2 flex flex-col font-secondary">
+
+      {/* Panels */}
+      <div className="card w-full mx-2 rounded-2xl mt-2 p-2 sm:p-3 flex flex-col font-secondary">
         <CustomTabPanel value={value} index={0}>
-          <h2 className="font-semibold text-lg">Church Information</h2>
-          <p className="px-2 text-sm text-gray-600 mb-8">
+          <h2 className="font-semibold text-base sm:text-lg">
+            Church Information
+          </h2>
+          <p className="text-xs sm:text-sm text-gray-600 mb-4 sm:mb-8">
             Basic church details and contact information.
           </p>
-          <div className="grid grid-cols-1 md:grid-cols-1 gap-4">
+
+          <div className="grid grid-cols-1 gap-3">
             <Input
               label="Church Name"
               value={"Jesus Is Lord Church Atimonan"}
@@ -101,34 +103,96 @@ export const SettingsTabs = () => {
               disabled={true}
             />
           </div>
-          <h2 className="font-semibold text-lg pt-8">About Us</h2>
         </CustomTabPanel>
+
         <CustomTabPanel value={value} index={1}>
-          <div className="flex justify-between items-center mb-4">
+          <div className="flex flex-col gap-2 mb-4">
             <div>
-              <h2 className="font-semibold text-lg">Service Schedule</h2>
-              <p className="text-sm text-gray-600 mb-8">
+              <h2 className="font-semibold text-base sm:text-lg">
+                Service Schedule
+              </h2>
+              <p className="text-xs sm:text-sm text-gray-600">
                 Manage service times and locations.
               </p>
             </div>
-            <div>
+
+            <div className="w-full sm:w-auto">
               <BlackButton val="+ Add Event" />
             </div>
           </div>
         </CustomTabPanel>
+
         <CustomTabPanel value={value} index={2}>
-          <div className="flex justify-between items-center mb-4">
+          <div className="flex flex-col gap-2 mb-4">
             <div>
-              <h2 className="font-semibold text-lg">Ministry Management</h2>
-              <p className="text-sm text-gray-600 mb-8">
+              <h2 className="font-semibold text-base sm:text-lg">
+                Ministry Management
+              </h2>
+              <p className="text-xs sm:text-sm text-gray-600">
                 Configure church ministries and leadership assignments.
               </p>
             </div>
-            <div>
+
+            <div className="w-full sm:w-auto">
               <BlackButton val="+ Add Ministry" />
             </div>
           </div>
         </CustomTabPanel>
+      </div>
+
+      {/* ABOUT US */}
+      <div className="w-full mx-2 rounded-2xl mt-2 p-2 sm:p-3 flex flex-col font-secondary">
+        <h1 className="text-lg sm:text-2xl text-white font-bold mt-4 mb-4 text-center">
+          ABOUT US
+        </h1>
+
+        {/* First Row */}
+        <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-4 gap-2 sm:gap-4 mb-4">
+          <CardImage
+            title="ALTEZ, JOY ANN S."
+            image="https://i.pinimg.com/736x/14/98/cb/1498cb7c3748f261e0d1f5c7bc604de4.jpg"
+            description="Documentor"
+          />
+
+          <CardImage
+            title="Andaluz, Hero E."
+            image="https://i.pinimg.com/736x/05/55/db/0555db705db7425f5ab556c13b985d4e.jpg"
+            description="tester/programmer"
+          />
+
+          <CardImage
+            title="Canzon, Jan Marti P."
+            image="https://i.pinimg.com/736x/d5/fe/23/d5fe23f8fe27cbf2cfb14462670c9ccf.jpg"
+            description="Documentor/Tester"
+          />
+
+          <CardImage
+            title="Gariguez, Lemuel S."
+            image="https://i.pinimg.com/1200x/ab/c3/c6/abc3c6e9c6f9b19a6452ba03bbb98133.jpg"
+            description="Analyst"
+          />
+        </div>
+
+        {/* Second Row */}
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 sm:gap-4">
+          <CardImage
+            title="Lorica, Gena A"
+            image="https://i.pinimg.com/736x/5b/35/fa/5b35fa7c35d4dec4ba4c7922fa8e428d.jpg"
+            description="Documentor"
+          />
+
+          <CardImage
+            title="Ortegoza, Marc Narvel L."
+            image="https://i.pinimg.com/1200x/af/a7/40/afa740da77259f74f5c71f008028ca1b.jpg"
+            description="Front-end Designer/Programmer"
+          />
+
+          <CardImage
+            title="Rabano, Lady Anne L."
+            image="https://i.pinimg.com/736x/89/e7/93/89e7935f1b42b93d6f8f9ea24cd984bd.jpg"
+            description="Front-end Designer/Programmer/Documentor"
+          />
+        </div>
       </div>
     </>
   );
